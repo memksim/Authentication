@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/authPageFragment">
+
+    <fragment
+        android:id="@+id/authPageFragment"
+        android:name="com.memksim.authentication.view.fragments.AuthPageFragment"
+        android:label="AuthPageFragment" >
+        <action
+            android:id="@+id/action_authPageFragment_to_regFirstPageFragment"
+            app:destination="@id/regFirstPageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/regFirstPageFragment"
+        android:name="com.memksim.authentication.view.fragments.RegFirstPageFragment"
+        android:label="RegFirstPageFragment" >
+        <action
+            android:id="@+id/action_regFirstPageFragment_to_regSecondPageFragment"
+            app:destination="@id/regSecondPageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/regSecondPageFragment"
+        android:name="com.memksim.authentication.view.fragments.RegSecondPageFragment"
+        android:label="RegSecondPageFragment" />
+</navigation>
