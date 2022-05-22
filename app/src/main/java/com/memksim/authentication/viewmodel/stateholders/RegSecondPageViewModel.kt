@@ -46,7 +46,7 @@ class RegSecondPageViewModel(app: Application): AndroidViewModel(app) {
     }
 
     fun saveUser(){
-        /*repository.saveUser(
+        repository.saveUser(
             User(
                 0,
                 _data.value!!.name,
@@ -55,9 +55,9 @@ class RegSecondPageViewModel(app: Application): AndroidViewModel(app) {
                 _data.value!!.city,
                 _data.value!!.email,
                 _data.value!!.password,
-                unique = true
+                unique = true,
             )
-        )*/
+        )
 
         Log.d(APP_TAG, "saveUser: ${User(
             0,

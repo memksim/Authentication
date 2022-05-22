@@ -59,6 +59,9 @@
 
         app:startIconDrawable="@drawable/ic_baseline_email"
         app:startIconTint="@color/design_default_color_primary"
+        app:endIconMode="clear_text"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/ic_baseline_error"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,7 +72,11 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/emailEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+
+            android:inputType="textEmailAddress"
+            android:imeOptions="actionNext"
+            android:lines="1"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -91,16 +98,23 @@
         app:layout_constraintStart_toStartOf="@+id/emailLayout"
         app:layout_constraintTop_toBottomOf="@id/emailLayout"
         app:startIconDrawable="@drawable/ic_baseline_lock"
-        app:startIconTint="@color/design_default_color_primary">
+        app:startIconTint="@color/design_default_color_primary"
+        app:endIconMode="clear_text"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/ic_baseline_error">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+
+            android:inputType="textPassword"
+            android:imeOptions="actionDone"
+            android:lines="1"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/doneButton"
+        android:id="@+id/loginButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:paddingTop="12dp"
@@ -158,7 +172,7 @@
 
         app:layout_constraintTop_toBottomOf="@id/passwordLayout"
         android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/doneButton" />
+        app:layout_constraintStart_toStartOf="@+id/loginButton" />
 
 
     <ImageView

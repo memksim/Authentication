@@ -1,7 +1,10 @@
 package com.memksim.authentication.model
 
+import android.os.Parcelable
 import androidx.room.*
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 @Entity(tableName = "users")
 data class User(
     @PrimaryKey(autoGenerate = true)
@@ -24,4 +27,4 @@ data class User(
     @ColumnInfo(name = "_usesGov") val gov: Boolean = false,
     @ColumnInfo(name = "_usesVk") val vk: Boolean = false,
     @ColumnInfo(name = "_usesFacebook") val fb: Boolean = false,
-)
+): Parcelable
