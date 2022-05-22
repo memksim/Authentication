@@ -73,6 +73,9 @@
 
         app:startIconDrawable="@drawable/ic_baseline_person_24"
         app:startIconTint="@color/design_default_color_primary"
+        app:endIconMode="clear_text"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/ic_baseline_error"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,7 +86,10 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/nameEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:lines="1"
+            android:inputType="text"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -105,12 +111,18 @@
         app:layout_constraintTop_toBottomOf="@id/nameLayout"
 
         app:startIconDrawable="@drawable/ic_baseline_person_24"
-        app:startIconTint="@color/design_default_color_primary">
+        app:startIconTint="@color/design_default_color_primary"
+        app:endIconMode="clear_text"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/ic_baseline_error">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/surnameEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:lines="1"
+            android:inputType="text"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -132,12 +144,16 @@
         app:layout_constraintTop_toBottomOf="@id/surnameLayout"
 
         app:startIconDrawable="@drawable/ic_baseline_phone"
-        app:startIconTint="@color/design_default_color_primary">
+        app:startIconTint="@color/design_default_color_primary"
+        app:endIconMode="clear_text"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/ic_baseline_error">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/phoneEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="phone"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -147,7 +163,8 @@
 
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:hint="City(optional)"
+        android:hint="City"
+        app:helperText="Optional*"
 
         app:boxCornerRadiusBottomEnd="10dp"
         app:boxCornerRadiusBottomStart="10dp"
@@ -159,12 +176,16 @@
         app:layout_constraintTop_toBottomOf="@id/phoneLayout"
 
         app:startIconDrawable="@drawable/ic_baseline_location_city"
-        app:startIconTint="@color/design_default_color_primary">
+        app:startIconTint="@color/design_default_color_primary"
+        app:endIconMode="clear_text">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/cityEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
+            android:lines="1"
+            android:inputType="text"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton

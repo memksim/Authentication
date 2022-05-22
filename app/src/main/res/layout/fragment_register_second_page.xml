@@ -73,6 +73,9 @@
 
         app:startIconDrawable="@drawable/ic_baseline_email"
         app:startIconTint="@color/design_default_color_primary"
+        app:endIconMode="clear_text"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/ic_baseline_error"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,7 +86,11 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/emailEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+
+            android:inputType="textEmailAddress"
+            android:lines="1"
+            android:imeOptions="actionNext"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -105,12 +112,19 @@
         app:layout_constraintTop_toBottomOf="@id/emailLayout"
 
         app:startIconDrawable="@drawable/ic_baseline_lock_open"
-        app:startIconTint="@color/design_default_color_primary">
+        app:startIconTint="@color/design_default_color_primary"
+        app:endIconMode="password_toggle"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/ic_baseline_error">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+
+            android:inputType="textPassword"
+            android:lines="1"
+            android:imeOptions="actionNext"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -132,12 +146,19 @@
         app:layout_constraintTop_toBottomOf="@id/passwordLayout"
 
         app:startIconDrawable="@drawable/ic_baseline_lock"
-        app:startIconTint="@color/design_default_color_primary">
+        app:startIconTint="@color/design_default_color_primary"
+        app:endIconMode="password_toggle"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@drawable/ic_baseline_error">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/repeatPasswordEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+
+            android:inputType="textPassword"
+            android:lines="1"
+            android:imeOptions="actionDone"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton

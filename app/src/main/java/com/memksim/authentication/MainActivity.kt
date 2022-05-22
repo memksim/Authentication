@@ -2,22 +2,16 @@ package com.memksim.authentication
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.memksim.authentication.databinding.ActivityMainBinding
 import com.memksim.authentication.view.fragments.AuthPageFragment
 
+const val APP_TAG = "AuthenticationTestTag"
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        val binding: ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        if (savedInstanceState == null){
-            supportFragmentManager
-                .beginTransaction()
-                .add(R.id.fragmentContainer, AuthPageFragment())
-                .commit()
-        }
     }
-
-
-
 }

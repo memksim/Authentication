@@ -1,27 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/authPageFragment">
 
     <fragment
         android:id="@+id/authPageFragment"
         android:name="com.memksim.authentication.view.fragments.AuthPageFragment"
-        android:label="AuthPageFragment" >
+        android:label="AuthPageFragment"
+        tools:layout="@layout/fragment_auth_page">
         <action
             android:id="@+id/action_authPageFragment_to_regFirstPageFragment"
             app:destination="@id/regFirstPageFragment" />
+        <action
+            android:id="@+id/action_authPageFragment_to_userPageFragment"
+            app:destination="@id/userPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/regFirstPageFragment"
         android:name="com.memksim.authentication.view.fragments.RegFirstPageFragment"
-        android:label="RegFirstPageFragment" >
+        android:label="RegFirstPageFragment"
+        tools:layout="@layout/fragment_register_first_page">
         <action
             android:id="@+id/action_regFirstPageFragment_to_regSecondPageFragment"
             app:destination="@id/regSecondPageFragment" />
+        <action
+            android:id="@+id/action_regFirstPageFragment_to_authPageFragment"
+            app:destination="@id/authPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/regSecondPageFragment"
         android:name="com.memksim.authentication.view.fragments.RegSecondPageFragment"
-        android:label="RegSecondPageFragment" />
+        android:label="RegSecondPageFragment"
+        tools:layout="@layout/fragment_register_second_page">
+        <action
+            android:id="@+id/action_regSecondPageFragment_to_userPageFragment"
+            app:destination="@id/userPageFragment" />
+        <action
+            android:id="@+id/action_regSecondPageFragment_to_regFirstPageFragment"
+            app:destination="@id/regFirstPageFragment" />
+        <argument
+            android:name="state"
+            app:argType="com.memksim.authentication.viewmodel.states.RegFirstPageState" />
+    </fragment>
+    <fragment
+        android:id="@+id/userPageFragment"
+        android:name="com.memksim.authentication.view.fragments.UserPageFragment"
+        android:label="UserPageFragment"
+        tools:layout="@layout/fragment_user_page"/>
 </navigation>
