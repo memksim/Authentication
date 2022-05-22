@@ -1,5 +1,7 @@
 package com.memksim.authentication.view.fragments
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.navArgs
+import com.memksim.authentication.EMAIL_PREFERENCES
+import com.memksim.authentication.PREF_USER_EMAIL
 import com.memksim.authentication.R
 import com.memksim.authentication.databinding.FragmentRegisterSecondPageBinding
 import com.memksim.authentication.databinding.FragmentUserPageBinding
@@ -28,12 +32,16 @@ class UserPageFragment: Fragment(R.layout.fragment_user_page) {
 
     private lateinit var adapter: UsesListAdapter
 
+    private lateinit var preferences: SharedPreferences
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentUserPageBinding.inflate(inflater, container, false)
+
+        preferences = requireActivity().getSharedPreferences(EMAIL_PREFERENCES, Context.MODE_PRIVATE)
 
         val navHostFragment = requireActivity().supportFragmentManager.findFragmentById(R.id.fragmentContainer) as NavHostFragment
         navController = navHostFragment.navController
@@ -74,7 +82,14 @@ class UserPageFragment: Fragment(R.layout.fragment_user_page) {
     }
 
     private fun logOut(){
+        outUser()
         navigateToAuthPage()
+    }
+
+    private fun outUser(){
+        preferences.edit()
+            .remove(PREF_USER_EMAIL)
+            .apply()
     }
 
     private fun navigateToAuthPage(){

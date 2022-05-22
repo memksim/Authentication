@@ -1,10 +1,12 @@
 package com.memksim.authentication.viewmodel.stateholders
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.memksim.authentication.APP_TAG
 import com.memksim.authentication.model.User
 import com.memksim.authentication.viewmodel.repos.DatabaseRepository
 import com.memksim.authentication.viewmodel.states.AuthPageState
@@ -39,7 +41,23 @@ class AuthPageViewModel(app: Application): AndroidViewModel(app) {
         return CompareResult(false, null)
     }
 
+    fun letIn(email: String): CompareResult{
+        Log.d(APP_TAG, "letIn: find...")
+        for(user in _data.value!!.users){
+            if(user.email == email){
+                Log.d(APP_TAG, "letIn: $user")
+                return CompareResult(
+                    true,
+                    user
+                )
+            }
+        }
 
+        return CompareResult(
+            false,
+            null
+        )
+    }
 
 
 }

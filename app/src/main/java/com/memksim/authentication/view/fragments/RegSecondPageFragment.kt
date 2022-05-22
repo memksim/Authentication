@@ -1,20 +1,21 @@
 package com.memksim.authentication.view.fragments
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.navArgs
-import com.memksim.authentication.APP_TAG
+import com.memksim.authentication.EMAIL_PREFERENCES
+import com.memksim.authentication.PREF_USER_EMAIL
 import com.memksim.authentication.R
-import com.memksim.authentication.databinding.FragmentRegisterFirstPageBinding
 import com.memksim.authentication.databinding.FragmentRegisterSecondPageBinding
+import com.memksim.authentication.model.User
 import com.memksim.authentication.viewmodel.stateholders.RegSecondPageViewModel
 
 class RegSecondPageFragment: Fragment(R.layout.fragment_register_second_page) {
@@ -27,12 +28,16 @@ class RegSecondPageFragment: Fragment(R.layout.fragment_register_second_page) {
 
     private lateinit var viewModel: RegSecondPageViewModel
 
+    private lateinit var preferences: SharedPreferences
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentRegisterSecondPageBinding.inflate(inflater, container, false)
+
+        preferences = requireActivity().getSharedPreferences(EMAIL_PREFERENCES, Context.MODE_PRIVATE)
 
         val navHostFragment = requireActivity().supportFragmentManager.findFragmentById(R.id.fragmentContainer) as NavHostFragment
         navController = navHostFragment.navController
@@ -54,12 +59,14 @@ class RegSecondPageFragment: Fragment(R.layout.fragment_register_second_page) {
         }
 
         binding.doneButton.setOnClickListener {
-            if (checkFields()){
+            if (fieldsCorrect()){
                 viewModel.setData(
                     binding.emailEditText.text.toString(),
                     binding.passwordEditText.text.toString()
                 )
+                putEmailToPref(binding.emailEditText.text.toString())
                 viewModel.saveUser()
+                navigateToUserPage(viewModel.makeUser())
             }
         }
     }
@@ -73,7 +80,18 @@ class RegSecondPageFragment: Fragment(R.layout.fragment_register_second_page) {
         navController.navigate(R.id.action_regSecondPageFragment_to_regFirstPageFragment)
     }
 
-    private fun checkFields(): Boolean{
+    private fun navigateToUserPage(user: User){
+        val action = RegSecondPageFragmentDirections.actionRegSecondPageFragmentToUserPageFragment(user)
+        navController.navigate(action)
+    }
+
+    private fun putEmailToPref(email: String){
+        preferences.edit()
+            .putString(PREF_USER_EMAIL, email)
+            .apply()
+    }
+
+    private fun fieldsCorrect(): Boolean{
         val email: Boolean
         val password: Boolean
         val repeatPassword: Boolean
